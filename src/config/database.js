@@ -1,9 +1,22 @@
 module.exports = {
   dialect: "postgres",
-  url: 'postgresql://postgres:NuiRsQtKvkGVH2Mh9hzk@containers-us-west-116.railway.app:8052/railway',
+  url: 'PGPASSWORD=eE3eDea-FG5aEcE2acedfgFg4G*g5Fb3 psql -h monorail.proxy.rlwy.net -U postgres -p 39917 -d railway',
   define: {
     timespamps: true,
     underscored: true,
     underscoredAll: true,
   },
 }
+
+//module.exports = {
+  //dialect: "postgres",
+  //host: "localhost",
+  //username: "postgres",
+  //password: "postgres",
+  //database: "codeburger",
+  //define: {
+    //timespamps: true,
+    //underscored: true,
+    //underscoredAll: true,
+  //},
+//}
