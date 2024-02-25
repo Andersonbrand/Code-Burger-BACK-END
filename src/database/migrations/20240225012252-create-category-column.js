@@ -1,10 +1,10 @@
-"use strict"
+'use strict'
 
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.addColumn("Products", "category_id", {
+    await queryInterface.addColumn('Products', 'category_id', {
       type: Sequelize.INTEGER,
-      references: { model: "Categories", key: "id" },
+      references: { model: 'Categories', key: 'id' },
       onUpdate: "CASCADE",
       onDelete: "SET NULL",
       allowNull: true,
