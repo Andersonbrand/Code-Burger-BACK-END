@@ -22,7 +22,10 @@ class CategoryController {
 
     const { name } = request.body
 
-    const { filename: path } = request.file
+    let path // Inicialize path como undefined
+    if (request.file) {
+      path = request.file.filename // Apenas atribua o filename se request.file existir
+    }
 
     const categoryExists = await Category.findOne({
       where: {
@@ -31,20 +34,18 @@ class CategoryController {
     })
 
     if (categoryExists) {
-      return response.status(404).json({ error: "Category already exists" })
+      return response.status(400).json({ error: "Category already exists" })
     }
-    const { id } = await Category.create({
-      name,
-      path,
-    })
 
-    return response.json({ id, name })
+    const { id } = await Category.create({ name, path })
+
+    return response.json({ name, id })
   }
 
   async index(request, response) {
-    const category = await Category.findAll()
+    const categories = await Category.findAll()
 
-    return response.json(category)
+    return response.json(categories)
   }
 
   async update(request, response) {
@@ -65,7 +66,6 @@ class CategoryController {
     }
 
     const { name } = request.body
-
     const { id } = request.params
 
     const category = await Category.findByPk(id)
@@ -73,7 +73,7 @@ class CategoryController {
     if (!category) {
       return response
         .status(401)
-        .json({ message: "Make sure your category id is correct" })
+        .json({ error: "Make sure your category id is correct" })
     }
 
     let path
@@ -81,13 +81,7 @@ class CategoryController {
       path = request.file.filename
     }
 
-    await Category.update(
-      {
-        name,
-        path,
-      },
-      { where: { id } },
-    )
+    await Category.update({ name, path }, { where: { id } })
 
     return response.status(200).json()
   }

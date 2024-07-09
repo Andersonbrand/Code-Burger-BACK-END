@@ -25,7 +25,7 @@ class OrderController {
 
     const productsId = request.body.products.map((product) => product.id)
 
-    const updateProducts = await Product.findAll({
+    const updatedProducts = await Product.findAll({
       where: {
         id: productsId,
       },
@@ -38,9 +38,9 @@ class OrderController {
       ],
     })
 
-    const editedProduct = updateProducts.map((product) => {
+    const editedProduct = updatedProducts.map((product) => {
       const productIndex = request.body.products.findIndex(
-        (requestProduct) => requestProduct.id == product.id,
+        (requestProduct) => requestProduct.id === product.id,
       )
 
       const newProduct = {
@@ -51,6 +51,7 @@ class OrderController {
         url: product.url,
         quantity: request.body.products[productIndex].quantity,
       }
+
       return newProduct
     })
 
@@ -100,7 +101,7 @@ class OrderController {
       return response.status(400).json({ error: error.message })
     }
 
-    return response.json({ message: "Status was update" })
+    return response.json({ message: "Status was updated" })
   }
 }
 

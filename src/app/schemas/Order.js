@@ -7,13 +7,11 @@ const OrderSchema = new mongoose.Schema(
         type: String,
         required: true,
       },
-
       name: {
         type: String,
         required: true,
       },
     },
-
     products: [
       {
         id: {
@@ -28,12 +26,10 @@ const OrderSchema = new mongoose.Schema(
           type: Number,
           required: true,
         },
-
         category: {
           type: String,
           required: true,
         },
-
         url: {
           type: String,
           required: true,
