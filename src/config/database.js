@@ -1,6 +1,6 @@
 module.exports = {
   dialect: "postgres",
-  url: "postgresql://postgres:tdhykScwjdmEpLPktUYhbDIAUMDKREta@autorack.proxy.rlwy.net:53380/railway",
+  url: "postgresql://postgres:dUhReAbkenOkwbWDHwvxQUFKrtpObZac@junction.proxy.rlwy.net:50337/railway",
   define: {
     timespamps: true,
     underscored: true,
