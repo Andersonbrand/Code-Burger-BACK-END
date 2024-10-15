@@ -5,8 +5,8 @@ WORKDIR /api
 COPY . .
 
 RUN rm -rf node_modules
-RUN yarn install --production
+RUN npm i
 
-CMD ["yarn", "dev"]
+CMD ["npm", "start"]
 
 EXPOSE 3001
