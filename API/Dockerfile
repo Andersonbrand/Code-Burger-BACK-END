@@ -7,6 +7,6 @@ COPY . .
 RUN rm -rf node_modules
 RUN npm i
 
-CMD ["npm", "start"]
+CMD ["node", "src/index.js"]
 
-EXPOSE 3001
+EXPOSE 5002
